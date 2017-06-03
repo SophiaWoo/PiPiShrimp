@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import index from '@/components/index'
 import films from '@/components/films'
+import detail from '@/components/detail'
 import cinemas from '@/components/cinemas'
 import Err404 from '@/components/err404'
 
@@ -16,6 +16,11 @@ export default new Router({
       component: index
     },
     {
+      path: '/detail',
+      name: 'detail',
+      component: detail
+    },
+    {
       path: '/films',
       name: 'films',
       component: films
@@ -24,11 +29,6 @@ export default new Router({
       path: '/cinemas',
       name: 'cinemas',
       component: cinemas
-    },
-    {
-      path: '/hello',
-      name: 'Hello',
-      component: Hello
     },
     {
       path: '/sign',

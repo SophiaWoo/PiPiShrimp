@@ -9,10 +9,13 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 import '../static/css/reset.css'
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
 Vue.config.productionTip = false
 
 Vue.use(VueResource)
 Vue.use(ElementUI)
+Vue.use(VueAwesomeSwiper)
 
 /* eslint-disable no-new */
 new Vue({

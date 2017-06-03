@@ -25,4 +25,9 @@ npm run e2e
 
 # run all tests
 npm test
+
+# run json-server
+npm run mock
 ```
+
+ 
