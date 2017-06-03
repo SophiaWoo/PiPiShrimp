@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import index from '@/components/index'
 import films from '@/components/films'
 import cinemas from '@/components/cinemas'
+import Err404 from '@/components/err404'
 
 Vue.use(Router)
 
@@ -28,6 +29,22 @@ export default new Router({
       path: '/hello',
       name: 'Hello',
       component: Hello
+    },
+    {
+      path: '/signin',
+      name: 'SignIn',
+      component: resolve => require(['@/components/signin.vue'], resolve)
+    },
+    {
+      path: '*',
+      name: 'all',
+      component: Err404,
+      redirect: '/404'
+    },
+    {
+      path: '/404',
+      name: 'err404',
+      component: Err404
     }
   ]
 })
