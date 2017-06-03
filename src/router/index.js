@@ -36,6 +36,11 @@ export default new Router({
       component: resolve => require(['@/components/sign.vue'], resolve)
     },
     {
+      path: '/confirm',
+      name: 'Confirm',
+      component: resolve => require(['@/components/ticketConfirm.vue'],resolve)
+    },
+    {
       path: '*',
       name: 'all',
       component: Err404,
