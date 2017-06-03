@@ -31,9 +31,9 @@ export default new Router({
       component: Hello
     },
     {
-      path: '/signin',
-      name: 'SignIn',
-      component: resolve => require(['@/components/signin.vue'], resolve)
+      path: '/sign',
+      name: 'Sign',
+      component: resolve => require(['@/components/sign.vue'], resolve)
     },
     {
       path: '*',

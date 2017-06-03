@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header>
+    <!-- <header>
       <nav class="nav-bar">
         <div class="logo">
           <img src="./assets/logo.png" />
@@ -28,7 +28,8 @@
       </nav>
     </header>
     <router-view></router-view>
-    <footer></footer>
+    <footer></footer> -->
+    <router-view></router-view>
   </div>
 </template>
 
