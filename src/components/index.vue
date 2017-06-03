@@ -65,9 +65,6 @@ export default {
 </script>
 
 <style scoped>
-  .index-page {
-    min-width: 960px;
-  }
   /*swiper*/
   .el-carousel__item img {
     width: 100%;

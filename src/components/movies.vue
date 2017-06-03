@@ -2,13 +2,13 @@
     <div>
         <el-row :gutter="20" type="flex" justify="start">
             <el-col :span="6" v-for="item in movieList" :key="item">
-                <div class="grid-content bg-purple">
-                <div class="cover"><img v-bind:src="item.imgUrl"/></div>
-                <div class="info">
-                    <el-rate v-model="item.score" :max="5" disabled show-text text-color="#ff9900" text-template="{value}"></el-rate>
-                    <span class="movie-name name">{{item.moviename}}</span>
-                    <span class="name">{{item.director}}</span>
-                </div>
+                <div class="grid-content bg-purple" @click="detail(item.movieId, item)">
+                  <div class="cover"><img v-bind:src="item.imgUrl"/></div>
+                  <div class="info">
+                      <el-rate v-model="item.score" :max="5" disabled show-text text-color="#ff9900" text-template="{value}"></el-rate>
+                      <span class="movie-name name">{{item.moviename}}</span>
+                      <span class="name">{{item.director}}</span>
+                  </div>
                 </div>
             </el-col>
         </el-row>
@@ -16,9 +16,16 @@
 </template>
 
 <script>
+
 export default {
   name: 'movies',
-  props: ['movieList']
+  props: ['movieList'],
+  methods: {
+    detail(movieId, item) {
+      // pass item for test
+      this.$router.push({ name: 'detail', params: { movieId: movieId, movie: item}})
+    }
+  }
 }
 </script>
 
@@ -32,20 +39,19 @@ export default {
   }
   .grid-content {
     border-radius: 4px;
-    height: 320px;
+    min-height: 320px;
+    cursor: pointer;
   }
   /*movie-list*/
    .cover {
     width:100%;
-    height: 80%;
   }
   .cover img{
     width:100%;
-    height: 100%;
   }
   .info {
-    height: 20%;
     width: 100%;
+    padding: 15px 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -54,9 +60,9 @@ export default {
   }
   .info .el-rate {
     position: absolute;
-    right: -15px;
-    top: 5px;
-    transform: scale(0.7);
+    right: -10px;
+    top: -5px;
+    transform: scale(0.75);
   }
   .info .name {
     margin-left: 10px;

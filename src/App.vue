@@ -54,6 +54,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-width: 960px;
 }
 body {
   margin: 0;
@@ -67,6 +68,7 @@ body {
 }
 .logo {
   float: left;
+  height: 100%;
 }
 .logo img {
   width: 40px;
