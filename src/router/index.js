@@ -41,6 +41,11 @@ export default new Router({
       component: resolve => require(['@/components/ticketConfirm.vue'],resolve)
     },
     {
+      path: '/pay',
+      name: 'Payment',
+      component: resolve => require(['@/components/pay.vue'],resolve)
+    },
+    {
       path: '*',
       name: 'all',
       component: Err404,
