@@ -1,7 +1,5 @@
 <template>
 	<div class="sign">
-	    <!-- <img src="/static/img/signinbg.jpg"> -->
-	    <!-- <img src="/static/img/signupbg.jpg"> -->
 		<el-card class="box-card" v-bind:class="{ signin: isSignin, signup: !isSignin }">
 		    <el-tabs v-model="activeName" @tab-click="tabClickHandler">
 		        <el-tab-pane label="Sign In" name="Signin">
@@ -27,11 +25,11 @@
 				        	:key="item.key"
 				        	:prop="item.key"
 				        	:rules="item.rules">
-			        		<el-input size="small"></el-input>
+			        		<el-input size="small" v-model="signUpData[item.key]"></el-input>
 			        	</el-form-item>
 			        	<el-form-item label="是否打开座位聊天功能" label-width="152px">
 			        		<el-switch
-			        		  v-model="isChat"
+			        		  v-model="signUpData['iChat']"
 			        		  on-color="#13ce66"
 			        		  off-color="#ff4949">
 			        		</el-switch>
@@ -70,28 +68,27 @@
             signUpForm: [{
                 	label: '用户名：',
 				    key: 'username',
-					value: '',
-					rules: [
-						{ required: true, message: '用户名不能为空'},
-					]
+					value: ''
                 }, {
                 	label: '密码：',
 				    key: 'password',
-					value: '',
-					rules: [
-						{ required: true, message: '密码不能为空'},
-					]
+					value: ''
                 }, {
                 	label: '昵称：',
-				    key: 'password',
-					value: ''
+				    key: 'nickname',
+					value: '匿名用户'
                 }
             ],
             signInData: {
             	username: '',
             	password: ''
             },
-            isChat: true
+            signUpData: {
+            	username: '',
+            	password: '',
+            	nickname: '',
+            	iChat: true
+            }
 	    }
 	  },
 	  methods: {
@@ -99,30 +96,86 @@
         	this.isSignin = (this.activeName == 'Signin') ? true : false;
         },
         signInHandler() {
-        	const vm = this;
-        	Api.postSignIn(this.signInData['username'], this.signInData['password'])
-        	    .then(data => {
-        	    	if (data) {
-        	    		vm.$message({
-        	    			showClose: true,
-        	    			message: 'success',
-        	    			type: 'success'
-        	    		})
-        	    	} else {
-        	    		vm.$message({
-        	    			showClose: true,
-        	    			message: 'fail to login',
-        	    			type: 'warning'
-        	    		})
-        	    	}
-        	    }).catch(err => {
-        	    	vm.$message({
-        	    		showClose: true,
-        	    		message: 'error,try again please',
-        	    		type: 'warning'
-        	    	})
-        	    	console.log(err)
-        	    })
+        	if (this.signInData['username'] == '') {
+        		vm.$message({
+        			showClose: true,
+        			message: 'username error',
+        			type: 'warning'
+        		})
+        	}
+        	if (this.signInData['password'] == '') {
+        		vm.$message({
+        			showClose: true,
+        			message: 'password error',
+        			type: 'warning'
+        		})
+        	} else {
+        		const vm = this;
+        		Api.postSignIn(this.signInData['username'], this.signInData['password'])
+        		    .then(data => {
+        		    	if (data) {
+        		    		vm.$message({
+        		    			showClose: true,
+        		    			message: 'success',
+        		    			type: 'success'
+        		    		})
+        		    	} else {
+        		    		vm.$message({
+        		    			showClose: true,
+        		    			message: 'fail to login',
+        		    			type: 'warning'
+        		    		})
+        		    	}
+        		    }).catch(err => {
+        		    	vm.$message({
+        		    		showClose: true,
+        		    		message: 'error,try again please',
+        		    		type: 'warning'
+        		    	})
+        		    	console.log(err)
+        		    })
+        	}
+        },
+        signUpHandler() {
+        	if (this.signInData['username'] == '') {
+        		vm.$message({
+        			showClose: true,
+        			message: 'username error',
+        			type: 'warning'
+        		})
+        	}
+        	if (this.signInData['password'] == '') {
+        		vm.$message({
+        			showClose: true,
+        			message: 'password error',
+        			type: 'warning'
+        		})
+        	} else {
+        		const vm = this;
+        		Api.postSignUp(this.signUp['username'], this.signUp['password'], this.signUp['nickname'], this.signUp['iChat'])
+        		    .then(data => {
+        		    	if (data) {
+        		    		vm.$message({
+        		    			showClose: true,
+        		    			message: 'success',
+        		    			type: 'success'
+        		    		})
+        		    	} else {
+        		    		vm.$message({
+        		    			showClose: true,
+        		    			message: 'fail to login',
+        		    			type: 'warning'
+        		    		})
+        		    	}
+        		    }).catch(err => {
+        		    	vm.$message({
+        		    		showClose: true,
+        		    		message: 'error,try again please',
+        		    		type: 'warning'
+        		    	})
+        		    	console.log(err)
+        		    })
+        	}
         }
 	  }
 	}

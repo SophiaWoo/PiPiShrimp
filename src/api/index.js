@@ -23,6 +23,24 @@ let Api = {
 				console.log('error:', response)
 			})
 		})
+	},
+	postSignUp(username, password, nickname, iChat) {
+		return new Promise((resolve, reject) => {
+			vm.$http.post(ApiUrl + '/register', {
+				params: {
+					username: username,
+					password: password,
+					nickname: nickname,
+					iChat: iChat
+				}
+			}).then(response => {
+				let data = response.body
+				resolve(data)
+			}, response => {
+				reject(response)
+				console.log('error:', response)
+			})
+		})
 	}
 }
 
