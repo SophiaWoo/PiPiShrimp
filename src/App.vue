@@ -19,7 +19,7 @@
         </div>
         
         <div class="user">
-          <router-link to="/signin">
+          <router-link to="/sign">
             <el-button>Sign In</el-button>
           </router-link>
           <router-link to="/signup">
