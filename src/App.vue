@@ -18,8 +18,13 @@
           </li>
         </div>
         
-        <div class="my">
-          <img src="./assets/me.png" />
+        <div class="user">
+          <router-link to="/signin">
+            <el-button>Sign In</el-button>
+          </router-link>
+          <router-link to="/signup">
+            <el-button type="primary">Sign Up</el-button>
+          </router-link>
         </div>
         
         <div class="search-bar">
@@ -27,8 +32,12 @@
         </div>
       </nav>
     </header>
-    <router-view></router-view>
-    <footer></footer>
+    <div class="main">
+      <router-view></router-view>
+    </div>
+    <footer>
+      <p>©CopyRight 2017 PiPiShrimp</p>
+    </footer>
   </div>
 </template>
 
@@ -50,21 +59,22 @@ body {
   margin: 0;
 }
 .nav-bar {
-  height: 100px;
+  height: 60px;
   width: 100%;
+  margin: 0;
+  padding: 0;
   background-color: #31404f;
 }
 .logo {
   float: left;
 }
 .logo img {
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   padding: 10px;
 }
 .menu {
   height: 100%;
-  /*width: 50%;*/
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -77,25 +87,28 @@ body {
   font-size: 18px;
 }
 .search-bar {
+  height: 100%;
+  width: 200px;
   float: right;
   display: flex;
-  height: 100px;
-  width: 200px;
   justify-content: center;
   flex-direction: column;
 }
 .search-bar input {
   font-size: 16px;
-  margin: 20px;
   padding: 5px;
 }
-.my {
+.user {
+  height: 100%;
+  width: 180px;
   float: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 10px;
 }
-.my img {
-  width: 60px;
-  height: 60px;
-  padding: 20px;
-  border-radius: 50%;
+.main {
+  clear: both;
 }
 </style>
