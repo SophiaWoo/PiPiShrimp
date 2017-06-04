@@ -42,13 +42,14 @@
 	    	  </el-row>
 	    	</el-card>
 	    	<el-row type="flex" justify="end" class="confirm-btn">
-	    		<el-button type="primary">确认付款</el-button>
+	    		<el-button type="primary" @click="payHandler">确认付款</el-button>
 	    	</el-row>
 	    </div>
 	</div>
 </template>
 
 <script>
+    import Api from '../api'
 	export default {
 	  data () {
 	    return {
@@ -60,10 +61,47 @@
 	    		session: '07',
 	    		perticket: 35,
 	    		ticketnum: 3
+	    	},
+	    	test: {
+	    		username: '123456',
+	    		cinemaId: 1,
+	    		movieId: 2,
+	    		tnum: 3,
+	    		hnum: 3,
+	    		seat: '16_26_36'
 	    	}
 	    }
+	  },
+	  methods: {
+	  	payHandler() {
+	  		const vm = this;
+
+	  		Api.postOrder(this.test['username'],this.test['cinemaId'], this.test['movieId'], this.test['tnum'], this.test['hnum'], this.test['seat'])
+	  		    .then(data => {
+	  		    	if (data) {
+	  		    		vm.$message({
+	  		    			showClose: true,
+	  		    			message: 'success',
+	  		    			type: 'success'
+	  		    		})
+	  		    	} else {
+	  		    		vm.$message({
+	  		    			showClose: true,
+	  		    			message: 'fail to login',
+	  		    			type: 'warning'
+	  		    		})
+	  		    	}
+	  		    }).catch(err => {
+	  		    	vm.$message({
+	  		    		showClose: true,
+	  		    		message: 'error,try again please',
+	  		    		type: 'warning'
+	  		    	})
+	  		    	console.log(err)
+	  		    })
+
+	  	}
 	  }
-	  // props: ['order']
 	}
 </script>
 

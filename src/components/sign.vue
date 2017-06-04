@@ -36,7 +36,7 @@
 			        	</el-form-item>
 		        	</el-form>
 		        	<el-row type="flex" justify="end">
-		        	    <el-button type="primary">提交</el-button>
+		        	    <el-button type="primary" @click="signUpHandler">提交</el-button>
 		        	    <el-button>重置</el-button>
 		        	</el-row>
 		        </el-tab-pane>
@@ -96,6 +96,7 @@
         	this.isSignin = (this.activeName == 'Signin') ? true : false;
         },
         signInHandler() {
+            const vm = this;
         	if (this.signInData['username'] == '') {
         		vm.$message({
         			showClose: true,
@@ -110,7 +111,6 @@
         			type: 'warning'
         		})
         	} else {
-        		const vm = this;
         		Api.postSignIn(this.signInData['username'], this.signInData['password'])
         		    .then(data => {
         		    	if (data) {
@@ -137,22 +137,22 @@
         	}
         },
         signUpHandler() {
-        	if (this.signInData['username'] == '') {
+            const vm = this;
+        	if (this.signUpData['username'] == '') {
         		vm.$message({
         			showClose: true,
         			message: 'username error',
         			type: 'warning'
         		})
         	}
-        	if (this.signInData['password'] == '') {
+        	if (this.signUpData['password'] == '') {
         		vm.$message({
         			showClose: true,
         			message: 'password error',
         			type: 'warning'
         		})
         	} else {
-        		const vm = this;
-        		Api.postSignUp(this.signUp['username'], this.signUp['password'], this.signUp['nickname'], this.signUp['iChat'])
+        		Api.postSignUp(this.signUpData['username'], this.signUpData['password'], this.signUpData['nickname'], this.signUpData['iChat'])
         		    .then(data => {
         		    	if (data) {
         		    		vm.$message({
