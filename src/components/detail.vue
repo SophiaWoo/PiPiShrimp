@@ -8,14 +8,16 @@
       </div>
 
       <el-row :gutter="0">
-        <el-col :span="8"><div class="poster"><img v-bind:src="movie.imgUrl"/></div></el-col>
-        <el-col :span="16">
+        <el-col :span="7"><div class="poster"><img v-bind:src="movie.imgUrl"/></div></el-col>
+        <el-col :span="17">
           <div class="info">
-            <p>---------------------</p>
-            <p>---------------------</p>
-            <p>-------- TODO  ------</p>
-            <p>---------------------</p>
-            <p>---------------------</p>
+            <p>导演：{{movie.director}}</p>
+            <p>主演：{{movie.actor}}</p>
+            <p>评分：<el-rate v-model="movie.score" :max="5" disabled show-text text-color="#ff9900" class="score" text-template="{value}"></el-rate></p>
+            <p>时长：{{movie["length"]}}</p>
+            <p>上映时间：{{movie.releaseTime}}</p>
+            <p>下架时间：{{movie.shelfTime}}</p>
+            <p>简介：{{movie.brief}}</p>
           </div>
         </el-col>
       </el-row>
@@ -55,10 +57,10 @@ export default {
 .detail {
   position: relative;
   width: 100%;
-  height: 400px;
   overflow: hidden;
 }
 .bg {
+  background-color: #375A67;
   position: absolute;
   top: 0;
   left: 0;
@@ -86,20 +88,25 @@ export default {
   line-height: 60px;
   font-weight: bold;
 }
-.el-col{
-  height: 340px;
-}
 .poster {
-  height: 100%;
   margin-left: 50px; 
   position: relative;
 }
 .poster img{
-  height: 280px;
+  width: 80%;
   margin: 30px 0;
   float: left;
 }
 .info {
   color: white;
+  text-align: left;
+  margin: 30px 0px;
+}
+.info p {
+  line-height: 23px;
+}
+.score {
+  display: inline-block;
+  line-height: 23px;
 }
 </style>
