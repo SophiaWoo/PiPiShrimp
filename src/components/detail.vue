@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="detail">
-      <img class="blur bg" :src="movie.bannerUrl"/>
+      <img class="blur bg" :src="movie.imgUrl"/>
 
       <div class="title">
         <span class="mvname">{{movie.moviename}}</span>

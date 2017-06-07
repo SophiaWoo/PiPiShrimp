@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getMovies() {
-      this.$http.get(this.database+"/allMv").then(response => {
+      this.$http.get(this.database+"/recommend").then(response => {
         this.recommendMovies = response.data
       }, response => {
       });
@@ -43,7 +43,7 @@ export default {
   /*swiper*/
   .el-carousel__item img {
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
   }
   .el-carousel__item:nth-child(2n) {
     background-color: #99a9bf;

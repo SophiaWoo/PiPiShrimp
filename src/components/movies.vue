@@ -1,7 +1,7 @@
 <template>
     <div>
-        <el-row :gutter="20" type="flex" justify="start">
-            <el-col :span="6" v-for="item in movieList" :key="item">
+        <el-row :gutter="20" type="flex" justify="start" >
+            <el-col :span="4" v-for="item in movieList" :key="item">
                 <div class="grid-content bg-purple" @click="detail(item.movieId, item)">
                   <div class="cover">
                     <img v-bind:src="item.imgUrl"/>
@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style scoped>
+  .el-row {
+    flex-wrap: wrap;
+  }
   .el-col {
     margin-bottom: 20px;
     border-radius: 4px;
