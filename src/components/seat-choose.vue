@@ -8,52 +8,6 @@
               <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
               <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
             </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
-            <div class="seat-group" v-for="item in items">
-              <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat" v-if="item.isChosen">
-              <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat" v-if="!item.isToChoose" @click="chooseHandler(item)">
-              <img src="/static/img/select-will.svg" class="seat" alt="avaliable seat" v-if="item.isToChoose" @click="chooseHandler(item)">
-            </div>
             <el-row class="legend">
               <img src="/static/img/select-ed.svg" class="seat" alt="avaliable seat"><span>不可选座位</span>
               <img src="/static/img/select-ing.svg" class="seat" alt="avaliable seat"><span>已选座位</span>
@@ -94,37 +48,12 @@ export default {
   },
   methods: {
     init() {
-      this.items = [{
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }, {
-        isChosen: false,
-        isToChoose: true
-      }];
+      for (let i = 0; i < this.seatNum; i++) {
+        this.items.push({
+          isChosen: false,
+          isToChoose: true
+        })
+      }
     },
     chooseHandler(item) {
       item.isToChoose = !item.isToChoose;
@@ -196,9 +125,9 @@ export default {
 
 .book-seat {
   float: left;
-  width: 540px;
-  min-width: 540px;
-  max-width: 540px;
+  width: 538px;
+  min-width: 538px;
+  max-width: 538px;
 
   position: absolute;
   left: 110px;
