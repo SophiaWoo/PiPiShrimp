@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import index from '@/components/index'
 import films from '@/components/films'
 import detail from '@/components/detail'
+import movies from '@/components/movies'
 import cinemas from '@/components/cinemas'
 import Err404 from '@/components/err404'
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/cinemas',
       name: 'cinemas',
       component: cinemas
+    },
+    {
+      path: '/movies',
+      name: 'movies',
+      component: movies
     },
     {
       path: '/sign',

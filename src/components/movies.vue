@@ -3,9 +3,19 @@
         <el-row :gutter="20" type="flex" justify="start">
             <el-col :span="6" v-for="item in movieList" :key="item">
                 <div class="grid-content bg-purple" @click="detail(item.movieId, item)">
-                  <div class="cover"><img v-bind:src="item.imgUrl"/></div>
+                  <div class="cover">
+                    <img v-bind:src="item.imgUrl"/>
+                  </div>
+                  
                   <div class="info">
-                      <el-rate v-model="item.score" :max="5" disabled show-text text-color="#ff9900" text-template="{value}"></el-rate>
+                      <el-rate
+                        v-model="item.score"
+                        :max="5"
+                        disabled
+                        show-text
+                        text-color="#ff9900"
+                        text-template="{value}">
+                      </el-rate>
                       <span class="movie-name name">{{item.moviename}}</span>
                       <span class="name">{{item.director}}</span>
                   </div>

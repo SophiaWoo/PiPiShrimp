@@ -20,21 +20,26 @@
         
         <div class="user">
           <router-link to="/sign">
-            <el-button>Sign In</el-button>
-          </router-link>
-          <router-link to="/signup">
-            <el-button type="primary">Sign Up</el-button>
+            <el-button type="primary">Sign In | Sign Up</el-button>
           </router-link>
         </div>
         
         <div class="search-bar">
-          <input type="search" placeholder="输入后按Enter搜索" />
+          <el-input
+            placeholder="请输入关键字"
+            icon="search"
+            size="small"
+            v-model="input"
+            :on-icon-click="handleSearchClick">
+          </el-input>
         </div>
       </nav>
     </header>
+
     <div class="main">
       <router-view></router-view>
     </div>
+
     <footer>
       <p>©CopyRight 2017 PiPiShrimp</p>
     </footer>
@@ -43,7 +48,22 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      input: '',
+      database: 'http://localhost:3003'
+    }
+  },
+  methods: {
+    handleSearchClick(ev) {
+      this.$http.get(this.database+"/movie/search?msg="+this.input).then(response => {
+        let movies = response.data
+        this.$router.push({ name: 'movies', params: {movieList: movies}})
+      }, response => {
+      });
+    }
+  }
 }
 </script>
 
@@ -95,10 +115,6 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-}
-.search-bar input {
-  font-size: 16px;
-  padding: 5px;
 }
 .user {
   height: 100%;

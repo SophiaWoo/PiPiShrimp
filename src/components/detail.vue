@@ -8,12 +8,26 @@
       </div>
 
       <el-row :gutter="0">
-        <el-col :span="7"><div class="poster"><img v-bind:src="movie.imgUrl"/></div></el-col>
+        <el-col :span="7">
+          <div class="poster">
+            <img v-bind:src="movie.imgUrl"/>
+          </div>
+        </el-col>
         <el-col :span="17">
           <div class="info">
             <p>导演：{{movie.director}}</p>
             <p>主演：{{movie.actor}}</p>
-            <p>评分：<el-rate v-model="movie.score" :max="5" disabled show-text text-color="#ff9900" class="score" text-template="{value}"></el-rate></p>
+            <p>评分：
+              <el-rate 
+                v-model="movie.score" 
+                :max="5" 
+                disabled 
+                show-text 
+                text-color="#ff9900" 
+                class="score" 
+                text-template="{value}">
+              </el-rate>
+            </p>
             <p>时长：{{movie["length"]}}</p>
             <p>上映时间：{{movie.releaseTime}}</p>
             <p>下架时间：{{movie.shelfTime}}</p>
