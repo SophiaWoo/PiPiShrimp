@@ -1,16 +1,16 @@
 <template>
   <div>
     <el-tabs v-model="activeTab" @tab-click="changeTab">
-        <el-tab-pane label="正在热映" name="hot-online">
-          <movies :movieList="hotOnline"></movies>
-        </el-tab-pane>
-        <el-tab-pane label="即将上映" name="coming-soon">
-          <movies :movieList="comingSoon"></movies>
-        </el-tab-pane>
-        <el-tab-pane label="热门电影" name="top-rate">
-          <movies :movieList="topRate"></movies>
-        </el-tab-pane>
-      </el-tabs>
+      <el-tab-pane label="正在热映" name="hot-online">
+        <movies :movieList="hotOnline"></movies>
+      </el-tab-pane>
+      <el-tab-pane label="即将上映" name="coming-soon">
+        <movies :movieList="comingSoon"></movies>
+      </el-tab-pane>
+      <el-tab-pane label="热门电影" name="top-rate">
+        <movies :movieList="topRate"></movies>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 

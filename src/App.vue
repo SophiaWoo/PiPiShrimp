@@ -20,7 +20,7 @@
         
         <div class="user">
           <router-link to="/sign">
-            <el-button type="primary">Sign In | Sign Up</el-button>
+            <el-button>Sign In | Sign Up</el-button>
           </router-link>
         </div>
         
@@ -84,7 +84,8 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background-color: #31404f;
+  background-color: #3C5F78;
+  background-image: url('./assets/banner.jpg')
 }
 .logo {
   float: left;
@@ -103,10 +104,17 @@ body {
   align-items: center;
   float: left;
 }
+.menu li {
+  list-style: none;
+  margin: 0 20px;
+}
 .menu li a{
   text-decoration: none;
   color: #fff;
   font-size: 18px;
+}
+.menu li a:hover{
+  color: silver;
 }
 .search-bar {
   height: 100%;
@@ -128,5 +136,8 @@ body {
 }
 .main {
   clear: both;
+}
+.user .el-button {
+  color: #3C5F78;
 }
 </style>

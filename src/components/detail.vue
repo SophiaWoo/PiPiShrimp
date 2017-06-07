@@ -29,9 +29,11 @@
               </el-rate>
             </p>
             <p>时长：{{movie["length"]}}</p>
-            <p>上映时间：{{movie.releaseTime}}</p>
+            <p>上映时间：{{movie.relaseTime}}</p>
+            <!--叶建华把键名写错了-->
             <p>下架时间：{{movie.shelfTime}}</p>
             <p>简介：{{movie.brief}}</p>
+            <!--叶建华数据多了p标签-->
           </div>
         </el-col>
       </el-row>

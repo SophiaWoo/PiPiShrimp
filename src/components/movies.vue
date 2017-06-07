@@ -6,7 +6,6 @@
                   <div class="cover">
                     <img v-bind:src="item.imgUrl"/>
                   </div>
-                  
                   <div class="info">
                       <el-rate
                         v-model="item.score"
@@ -19,6 +18,25 @@
                       <span class="movie-name name">{{item.moviename}}</span>
                       <span class="name">{{item.director}}</span>
                   </div>
+                  <div class="mask">
+                    <p>导演：{{item.director}}</p>
+                    <p>主演：{{item.actor}}</p>
+                    <p>评分：
+                      <el-rate 
+                        v-model="item.score" 
+                        :max="5" 
+                        disabled 
+                        show-text 
+                        class="score"
+                        text-color="#ff9900">
+                      </el-rate>
+                    </p>
+                    <p>时长：{{item["length"]}}</p>
+                    <p>上映时间：{{item.relaseTime}}</p>
+                    <!--叶建华把键名写错了-->
+                    <p>下架时间：{{item.shelfTime}}</p>
+                    <el-button type="info" size="small" v-text="action"></el-button>
+                  </div>
                 </div>
             </el-col>
         </el-row>
@@ -30,6 +48,11 @@
 export default {
   name: 'movies',
   props: ['movieList'],
+  data() {
+    return {
+      action: "查看详情"
+    }
+  },
   methods: {
     detail(movieId, item) {
       // pass item for test
@@ -41,35 +64,45 @@ export default {
 
 <style scoped>
   .el-row {
+    display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
   }
   .el-col {
     margin-bottom: 20px;
     border-radius: 4px;
   }
+  /*movie-list*/
   .bg-purple {
-    background: #d3dce6;
+    background: #E1E5E9;
   }
   .grid-content {
     border-radius: 4px;
     min-height: 320px;
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
+            box-shadow:1px 0px 6px #333333;
+       -moz-box-shadow:1px 0px 6px #333333;
+    -webkit-box-shadow:1px 0px 6px #333333;
   }
-  /*movie-list*/
-   .cover {
+  .cover {
     width:100%;
+    overflow: hidden;
   }
   .cover img{
-    width:100%;
+    width:95%;
+    height: 220px;
   }
   .info {
     width: 100%;
-    padding: 15px 0;
+    padding: 15px 0 5px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    text-align: left;
   }
   .info .el-rate {
     position: absolute;
@@ -83,5 +116,37 @@ export default {
   }
   .info .movie-name {
     font-weight: bold;
+  }
+  .mask {
+    z-index: 2;
+    background-color: rgba(105,105,105,0.8);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+    left: 0;
+    color: white;
+    text-align: left;
+    font-size: 12px;
+    line-height: 13px;
+  }
+  .mask p {
+    padding: 0 15px;
+  }
+  .mask .el-button {
+    display: block;
+    margin: 40px auto;
+  }
+  .score {
+    transform: scale(0.7);
+    display: inline-block;
+    line-height: 13px;
+    position: relative;
+    left: 15px;;
+    top: -18px;
+  }
+  .grid-content:hover .mask {
+    top: 0;
+    transition: all 0.2s linear;
   }
 </style>
