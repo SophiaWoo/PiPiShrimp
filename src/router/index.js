@@ -48,7 +48,7 @@ export default new Router({
     {
       path: '/choose',
       name: 'Choose',
-      component: resolve => require(['@/components/ticket-choose.vue'], resolve)
+      component: resolve => require(['@/components/seat-choose.vue'], resolve)
     },
     {
       path: '*',
