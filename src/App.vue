@@ -37,7 +37,7 @@
     </header>
 
     <div class="main">
-      <router-view></router-view>
+      <router-view :database = "database"></router-view>
     </div>
 
     <footer>

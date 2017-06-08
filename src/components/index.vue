@@ -7,7 +7,7 @@
         </el-carousel-item>
       </el-carousel>
     </div>
-    <films></films>
+    <films :database="database"></films>
   </div>  
 </template>
 
@@ -17,13 +17,15 @@ export default {
   name: 'index',
   data () {
     return {
-      database: "http://localhost:3003",
       recommendMovies: [],
     }
   },
+  props : {
+    database: String
+  },
   methods: {
     getMovies() {
-      this.$http.get(this.database+"/recommend").then(response => {
+      this.$http.get(this.database+"/movie/recommend").then(response => {
         this.recommendMovies = response.data
       }, response => {
       });

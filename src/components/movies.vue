@@ -2,7 +2,7 @@
     <div>
         <el-row :gutter="20" type="flex" justify="start" >
             <el-col :span="4" v-for="item in movieList" :key="item">
-                <div class="grid-content bg-purple" @click="detail(item.movieId, item)">
+                <div class="grid-content" @click="detail(item.movieId, item)">
                   <div class="cover">
                     <img v-bind:src="item.imgUrl"/>
                   </div>
@@ -23,17 +23,17 @@
                     <p>主演：{{item.actor}}</p>
                     <p>评分：
                       <el-rate 
-                        v-model="item.score" 
+                        v-model="item.score"
                         :max="5" 
                         disabled 
                         show-text 
                         class="score"
-                        text-color="#ff9900">
+                        text-color="#ff9900"
+                        text-template="{value}">
                       </el-rate>
                     </p>
                     <p>时长：{{item["length"]}}</p>
-                    <p>上映时间：{{item.relaseTime}}</p>
-                    <!--叶建华把键名写错了-->
+                    <p>上映时间：{{item.releaseTime}}</p>
                     <p>下架时间：{{item.shelfTime}}</p>
                     <el-button type="info" size="small" v-text="action"></el-button>
                   </div>
@@ -47,7 +47,7 @@
 
 export default {
   name: 'movies',
-  props: ['movieList'],
+  props: ['movieList', 'database'],
   data() {
     return {
       action: "查看详情"
@@ -73,10 +73,8 @@ export default {
     border-radius: 4px;
   }
   /*movie-list*/
-  .bg-purple {
-    background: #E1E5E9;
-  }
   .grid-content {
+    background: lightgrey;
     border-radius: 4px;
     min-height: 320px;
     position: relative;

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="main">
     <div class="detail">
       <img class="blur bg" :src="movie.imgUrl"/>
 
@@ -19,7 +19,7 @@
             <p>主演：{{movie.actor}}</p>
             <p>评分：
               <el-rate 
-                v-model="movie.score" 
+                :v-model="movie.score" 
                 :max="5" 
                 disabled 
                 show-text 
@@ -29,16 +29,14 @@
               </el-rate>
             </p>
             <p>时长：{{movie["length"]}}</p>
-            <p>上映时间：{{movie.relaseTime}}</p>
-            <!--叶建华把键名写错了-->
+            <p>上映时间：{{movie.releaseTime}}</p>
             <p>下架时间：{{movie.shelfTime}}</p>
             <p>简介：{{movie.brief}}</p>
-            <!--叶建华数据多了p标签-->
           </div>
         </el-col>
       </el-row>
     </div>
-    <ticketChoose></ticketChoose>
+    <ticketChoose :movie="movie" :database="database"></ticketChoose>
   </div>  
 </template>
 
@@ -53,8 +51,10 @@ export default {
     return {
       movie: this.$route.params.movie,
       movieId: this.$route.params.movieId,
-      database: "http://localhost:3003"
     }
+  },
+  props : {
+    database: String
   },
   methods: {
 

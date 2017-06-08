@@ -26,7 +26,7 @@ npm run e2e
 # run all tests
 npm test
 
-# run json-server
+# run json-server to mock the fake data
 npm run mock
 ```
 
