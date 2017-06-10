@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     getMovies() {
-      this.$http.get(this.database+"/movie/recommend").then(response => {
+      this.$http.get(this.database+"/recommend").then(response => {
         this.recommendMovies = response.data
       }, response => {
       });

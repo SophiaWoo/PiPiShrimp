@@ -31,15 +31,15 @@ export default {
   },
   methods: {
     getMovies() {
-      this.$http.get(this.database+"/movie/onShowMv").then(response => {
+      this.$http.get(this.database+"/onShowMv").then(response => {
         this.hotOnline = response.data
       }, response => {
       });
-      this.$http.get(this.database+"/movie/comingSoon").then(response => {
+      this.$http.get(this.database+"/comingSoon").then(response => {
         this.comingSoon = response.data
       }, response => {
       });
-      this.$http.get(this.database+"/movie/allMv").then(response => {
+      this.$http.get(this.database+"/allMv").then(response => {
         this.topRate = response.data
       }, response => {
       });
